@@ -9,7 +9,7 @@
 
     $count = $req->rowCount();
 
-    if ($don = $req->fetch())
+    while ($don = $req->fetch())
     {
         ?>
         <div class="game">
