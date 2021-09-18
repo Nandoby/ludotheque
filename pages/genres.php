@@ -12,10 +12,14 @@
     if ($don = $req->fetch())
     {
         ?>
+        <div class="game">
+            <img src="images/<?= $don['image'] ?>" alt="">
+            <div class="infos">
+                <h2><?= $don['Nom'] ?></h2>
+                <p><?= $don['description'] ?></p>
+            </div>
+        </div>
 
-        <h2><?= $don['Nom'] ?></h2>
-        <p><?= $don['description'] ?></p>
-        <img src="images/<?= $don['image'] ?>" alt="">
         <?php
     }
 
