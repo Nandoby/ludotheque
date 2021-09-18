@@ -1,0 +1,31 @@
+<?php
+    if (isset($_GET['id']))
+    {
+        $id = htmlspecialchars($_GET['id']);
+    }
+
+    $req = $bdd->prepare('SELECT jeuxvideos.name as Nom, description, editeur, image FROM jeuxvideos INNER JOIN genres_jeux ON jeuxvideos.id = genres_jeux.id_jeux INNER JOIN genres ON genres_jeux.id_genre = genres.id WHERE genres.id = ?');
+    $req->execute([$id]);
+
+    $count = $req->rowCount();
+
+    if ($don = $req->fetch())
+    {
+        ?>
+
+        <h2><?= $don['Nom'] ?></h2>
+        <p><?= $don['description'] ?></p>
+        <img src="images/<?= $don['image'] ?>" alt="">
+        <?php
+    }
+
+    if ($count == 0)
+    {
+       echo '<p class="error">Pas d\'article pour ce genre de jeu</p>';
+    }
+
+
+
+?>
+
+

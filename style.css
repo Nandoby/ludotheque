@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.error {
+    color: red;
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+/*** Header ***/
+header {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 4px 8px rgba(0,0,0,.5)
+}
+header #logo {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 20%;
+    color: darkblue;
+}
+header form {
+    width: 80%;
+}
+
+header form label {
+    font-size: 1.2rem;
+    width: 10%;
+}
+header form input {
+    padding: 0.5rem;
+    width: 50%;
+    font-size: 1rem;
+}
+header nav {
+    width: 100%;
+    background: #7676b4;
+    margin-top: 1.3rem;
+
+}
+header nav > ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 2rem;
+}
+header nav > ul > li {
+    width: 10%;
+    text-align: center;
+    position: relative;
+}
+header nav > ul > li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+header nav > ul > li a:hover {
+    background: #4f4f85;
+}
+header nav ul li ul {
+    list-style: none;
+    display: none;
+}
+header nav ul li:hover ul{
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    top: 35px;
+    background: #7676b4;
+    z-index: 3;
+}
+header nav ul li:hover ul li {
+    width: 100%;
+    color: white;
+    font-size: 1.2rem;
+}
+
+header nav ul li:hover ul li:hover {
+    background: #4f4f85;
+
+}
+
+/*** Main ***/
+main {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+main .home_title {
+    width: 100%;
+    font-size: 2.4rem;
+    color: #1f2234;
+    margin-top: 1rem;
+    text-align: center;
+}
