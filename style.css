@@ -103,3 +103,30 @@ main .home_title {
     margin-top: 1rem;
     text-align: center;
 }
+
+main .game {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    flex-direction: column;
+    width: 500px;
+}
+main .game img {
+    width: 100%;
+    object-fit: cover;
+}
+main .game .infos {
+    flex: 1 0 40%;
+    padding: 1rem;
+}
+main .game .infos h2 {
+    font-size: 2rem;
+    margin-bottom: calc(2rem * 0.5);
+    color: rgba(0, 0, 0, 0.85)
+}
+main .game .infos p {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.75);
+}
