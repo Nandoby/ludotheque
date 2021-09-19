@@ -3,6 +3,8 @@
 <?php
     if (isset($_POST['search'])) {
         $search = htmlspecialchars($_POST['search']);
+    } else {
+        $search = "";
     }
 
     $req = $bdd->prepare('SELECT id, name, description, image, prix, DATE_FORMAT(release_date, "%d / %m / %Y") AS date, editeur FROM jeuxvideos WHERE name LIKE :search OR editeur LIKE :search');
