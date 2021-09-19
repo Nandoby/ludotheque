@@ -6,7 +6,8 @@
         $pages = [
             'home' => 'home.php',
             'genres' => 'genres.php',
-            'search' => 'search.php'
+            'search' => 'search.php',
+            'game' => 'game.php'
         ];
 
         if (array_key_exists($_GET['action'], $pages)) {
@@ -22,6 +23,23 @@
                     if ($don = $req->fetch())
                     {
                         $action = $pages['genres'];
+
+                    } else {
+                        $action = '404.php';
+                    }
+                    $req->closeCursor();
+                } else {
+                    $action = '404.php';
+                }
+            } elseif ($_GET['action'] == 'game') {
+                if (isset($_GET['id']) && !empty($_GET['id']))
+                {
+                    $id = htmlspecialchars($_GET['id']);
+                    $req = $bdd->prepare('SELECT * FROM jeuxvideos WHERE id = ?');
+                    $req->execute([$id]);
+                    if ($don = $req->fetch())
+                    {
+                        $action = $pages['game'];
 
                     } else {
                         $action = '404.php';
