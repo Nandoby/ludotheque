@@ -9,7 +9,30 @@
         ];
 
         if (array_key_exists($_GET['action'], $pages)) {
-            $action = $pages[$_GET['action']];
+
+            if ($_GET['action'] == 'genres')
+            {
+
+                if (isset($_GET['id']) && !empty($_GET['id']))
+                {
+                    $id = htmlspecialchars($_GET['id']);
+                    $req = $bdd->prepare('SELECT * FROM genres WHERE id = ?');
+                    $req->execute([$id]);
+                    if ($don = $req->fetch())
+                    {
+                        $action = $pages['genres'];
+
+                    } else {
+                        $action = '404.php';
+                    }
+                    $req->closeCursor();
+                } else {
+                    $action = '404.php';
+                }
+            } else {
+                $action = $pages[$_GET['action']];
+            }
+
         } else {
             $action = '404.php';
         }
