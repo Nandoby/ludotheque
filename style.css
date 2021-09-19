@@ -135,7 +135,7 @@ main ul li.game_list {
     color: black;
     font-size: 1.4rem;
     margin-bottom: calc(1.2rem * 0.5);
-    margin-top: calc(1.2rem / 1.125):
+    margin-top: calc(1.2rem / 1.125);
 }
 main ul li.game_list a {
     color: inherit;
