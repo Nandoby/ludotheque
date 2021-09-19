@@ -8,6 +8,7 @@
 
     while ($don = $req->fetch())
     {
+        $prix = str_replace('.', ',', $don['prix']);
         ?>
         <div class="game">
             <img src="images/<?= $don['image'] ?>" alt="">
@@ -15,7 +16,7 @@
                 <h2><?= $don['Nom'] ?></h2>
                 <p><?= $don['description'] ?></p>
                 <p><b>Date de sortie :</b> <?= $don['date'] ?></p>
-                <p><b>Prix :</b> <?= $don['prix'] ?> €</p>
+                <p><b>Prix :</b> <?= $prix ?> €</p>
             </div>
         </div>
 

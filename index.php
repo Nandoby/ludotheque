@@ -74,6 +74,7 @@
                             $count -> execute([$don['name']]);
                             $data = $count->fetch();
 
+
                             echo '<li><a href="index.php?action=genres&id=' . $don['id'] . '">' . $don['name'] . ' ' .'<i>('.$data['numb'].')</i></a></li>';
                         }
                         $req->closeCursor();
