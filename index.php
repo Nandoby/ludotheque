@@ -6,6 +6,7 @@
         $pages = [
             'home' => 'home.php',
             'genres' => 'genres.php',
+            'search' => 'search.php'
         ];
 
         if (array_key_exists($_GET['action'], $pages)) {
@@ -54,7 +55,7 @@
 <body>
 <header>
     <div id="logo">Ludothèque</div>
-    <form action="">
+    <form action="index.php?action=search" method="POST">
         <label for="search">Rechercher :</label>
         <input type="text" name="search" id="search">
     </form>

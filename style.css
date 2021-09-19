@@ -156,3 +156,9 @@ main ul li.game_list a:hover:before {
     width:100%;
     left: 0;
 }
+main .title_search {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: rgba(0,0,0,.85)
+}
