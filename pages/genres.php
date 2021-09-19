@@ -1,8 +1,5 @@
 <?php
-    if (isset($_GET['id']))
-    {
-        $id = htmlspecialchars($_GET['id']);
-    }
+
 
     $req = $bdd->prepare('SELECT jeuxvideos.name as Nom, description, editeur, image FROM jeuxvideos INNER JOIN genres_jeux ON jeuxvideos.id = genres_jeux.id_jeux INNER JOIN genres ON genres_jeux.id_genre = genres.id WHERE genres.id = ?');
     $req->execute([$id]);
