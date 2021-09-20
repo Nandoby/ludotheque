@@ -51,4 +51,3 @@
     <input class="btn btn-primary mt-3" type="submit" value="Connexion">
 </form>
 </body>
-</html>
