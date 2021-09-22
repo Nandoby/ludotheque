@@ -79,7 +79,7 @@
     </form>
     <nav>
         <ul>
-            <li><a href="index.php?action=home">Home</a></li>
+            <li><a href="home">Home</a></li>
             <li><a href="">Genres</a>
                 <ul>
                     <?php
@@ -94,7 +94,7 @@
                             $data = $count->fetch();
 
 
-                            echo '<li><a href="index.php?action=genres&id=' . $don['id'] . '">' . $don['name'] . ' ' .'<i>('.$data['numb'].')</i></a></li>';
+                            echo '<li><a href="genres-' . $don['id'] . '">' . $don['name'] . ' ' .'<i>('.$data['numb'].')</i></a></li>';
                         }
                         $req->closeCursor();
                     ?>

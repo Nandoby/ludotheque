@@ -11,7 +11,7 @@
                 <p><b>Prix :</b> <?= $don['prix'] ?> €</p>
             </div>
         </div>
-        <a class="btn-primary" href="index.php">Retour</a>
+        <a class="btn-primary" href="home">Retour</a>
     <?php endwhile;
 
     $req->closeCursor();
