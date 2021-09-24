@@ -4,10 +4,24 @@ if (!isset($_SESSION['login'])) {
     header("LOCATION:index.php");
 }
 if (isset($_GET['id']) && !empty($_GET['id']))
+{
     $id = htmlspecialchars($_GET['id']);
+}else{
+    header("LOCATION:index.php");
+}
+
 require '../connexion.php';
 $req = $bdd->prepare('SELECT * FROM jeuxvideos WHERE id = ?');
 $req->execute([$id]);
+
+if (isset($_GET['error']))
+{
+    $_GET['error'] = 1 ? $error = 'Veuillez entrer le nom' : null;
+}
+if (isset($_GET['success']))
+{
+    $update = 'Votre article a bien été modifié';
+}
 ?>
 
 
@@ -24,7 +38,9 @@ $req->execute([$id]);
 </head>
 <body>
 <div class="container">
-    <form action="treatmentModify.php" method="POST" enctype="multipart/form-data">
+    <?php if (isset($error)) echo '<p class="alert alert-danger">'.$error.'</p>' ?>
+    <?php if (isset($update)) echo '<p class="alert alert-success">'.$update.'</p>' ?>
+    <form action="treatmentModify.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
         <?php
         if ($don = $req->fetch()) :?>
             <div class="form-group mb-3">
@@ -33,10 +49,10 @@ $req->execute([$id]);
             </div>
             <div class="form-group mb-3">
                 <label for="desc" class="form-label">Description</label>
-                <textarea id="desc" class="form-control"><?= $don['description'] ?></textarea>
+                <textarea id="desc" class="form-control" name="desc"><?= $don['description'] ?></textarea>
             </div>
             <div class="form-group mb-3">
-                <p">Image actuelle :</p>
+                <p>Image actuelle :</p>
                 <img src="../images/<?= $don['image'] ?>" alt="<?= $don['name'] ?>" width="180">
             </div>
             <div class="form-group mb-3">
@@ -52,8 +68,25 @@ $req->execute([$id]);
                 <input class="form-control" type="date" name="date" id="date" value="<?= $don['release_date'] ?>">
             </div>
             <div class="form-group mb-3">
-                <label for="genres" class="form-label">Genres :</label>
-
+               <p>Genres :</p>
+                <?php
+                $genres = $bdd->query('SELECT genres.name AS gname, id_jeux AS idj, genres.id AS idg FROM genres LEFT JOIN genres_jeux gj on genres.id = gj.id_genre LEFT JOIN jeuxvideos j on j.id = gj.id_jeux ORDER BY genres.name ASC');
+                while ($donGenres = $genres->fetch())
+                {
+                    if ($donGenres['idj'] == $id)
+                    {
+                        echo '<div class="form-check">';
+                        echo '<input class="form-check-input" type="checkbox" name="genres[]" value="'.$donGenres['idg'].'" checked>';
+                        echo '<label class="form-check-label">'.$donGenres['gname'].'</label>';
+                        echo '</div>';
+                    } else {
+                        echo '<div class="form-check">';
+                        echo '<input class="form-check-input" type="checkbox" name="genres[]" value="'.$donGenres['idg'].'">';
+                        echo '<label class="form-check-label">'.$donGenres['gname'].'</label>';
+                        echo '</div>';
+                    }
+                }
+                ?>
             </div>
             <div class="form-group mb-3">
                 <label for="editeur" class="form-label">Editeur :</label>
