@@ -129,6 +129,12 @@ if (isset($_POST['nom']) && !empty($_POST['nom'])) {
                         ]);
                     }
 
+                    if ($imageExtension == ".png")
+                    {
+                        header("LOCATION:redimpng.php?image=".$imagecpt);
+                    } else {
+                        header("LOCATION:redim.php?image=".$imagecpt);
+                    }
 
                 };
             } else {
