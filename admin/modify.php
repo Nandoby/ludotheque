@@ -70,19 +70,20 @@ if (isset($_GET['success']))
             <div class="form-group mb-3">
                <p>Genres :</p>
                 <?php
-                $genres = $bdd->query('SELECT genres.name AS gname, id_jeux AS idj, genres.id AS idg FROM genres LEFT JOIN genres_jeux gj on genres.id = gj.id_genre LEFT JOIN jeuxvideos j on j.id = gj.id_jeux ORDER BY genres.name ASC');
+                $genres = $bdd->prepare('SELECT * FROM genres_jeux gj RIGHT JOIN genres g on gj.id_genre = g.id AND gj.id_jeux = ? ORDER BY name');
+                $genres->execute([$id]);
                 while ($donGenres = $genres->fetch())
                 {
-                    if ($donGenres['idj'] == $id)
+                    if ($donGenres['id_jeux'] == $id)
                     {
                         echo '<div class="form-check">';
-                        echo '<input class="form-check-input" type="checkbox" name="genres[]" value="'.$donGenres['idg'].'" checked>';
-                        echo '<label class="form-check-label">'.$donGenres['gname'].'</label>';
+                        echo '<input class="form-check-input" type="checkbox" name="genres[]" value="'.$donGenres['id_genre'].'" checked>';
+                        echo '<label class="form-check-label">'.$donGenres['name'].'</label>';
                         echo '</div>';
                     } else {
                         echo '<div class="form-check">';
-                        echo '<input class="form-check-input" type="checkbox" name="genres[]" value="'.$donGenres['idg'].'">';
-                        echo '<label class="form-check-label">'.$donGenres['gname'].'</label>';
+                        echo '<input class="form-check-input" type="checkbox" name="genres[]" value="'.$donGenres['id_genre'].'">';
+                        echo '<label class="form-check-label">'.$donGenres['name'].'</label>';
                         echo '</div>';
                     }
                 }
