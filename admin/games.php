@@ -60,6 +60,7 @@ if (!isset($_SESSION['login'])) {
         ?>
         </tbody>
     </table>
+    <a class="btn btn-success" href="addGame.php">Ajouter nouveau</a>
 </div>
 </body>
 </html>
