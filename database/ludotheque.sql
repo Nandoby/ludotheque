@@ -2,22 +2,22 @@
 -- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Sep 28, 2021 at 07:33 PM
--- Server version: 5.7.30
--- PHP Version: 7.4.9
+-- Hôte : localhost:8889
+-- Généré le : mar. 28 sep. 2021 à 21:15
+-- Version du serveur :  5.7.30
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `ludotheque`
+-- Base de données : `ludotheque`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Structure de la table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -28,7 +28,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin`
+-- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`) VALUES
@@ -37,7 +37,7 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genres`
+-- Structure de la table `genres`
 --
 
 CREATE TABLE `genres` (
@@ -46,7 +46,7 @@ CREATE TABLE `genres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `genres`
+-- Déchargement des données de la table `genres`
 --
 
 INSERT INTO `genres` (`id`, `name`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genres_jeux`
+-- Structure de la table `genres_jeux`
 --
 
 CREATE TABLE `genres_jeux` (
@@ -78,7 +78,7 @@ CREATE TABLE `genres_jeux` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `genres_jeux`
+-- Déchargement des données de la table `genres_jeux`
 --
 
 INSERT INTO `genres_jeux` (`id_genre`, `id_jeux`) VALUES
@@ -88,17 +88,12 @@ INSERT INTO `genres_jeux` (`id_genre`, `id_jeux`) VALUES
                                                       (11, 3),
                                                       (13, 3),
                                                       (15, 3),
-                                                      (14, 3),
-                                                      (1, 4),
-                                                      (9, 4),
-                                                      (11, 4),
-                                                      (13, 4),
-                                                      (15, 4);
+                                                      (14, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jeuxvideos`
+-- Structure de la table `jeuxvideos`
 --
 
 CREATE TABLE `jeuxvideos` (
@@ -112,72 +107,71 @@ CREATE TABLE `jeuxvideos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `jeuxvideos`
+-- Déchargement des données de la table `jeuxvideos`
 --
 
 INSERT INTO `jeuxvideos` (`id`, `name`, `description`, `image`, `prix`, `release_date`, `editeur`) VALUES
                                                                                                        (1, 'Black Desert Online', 'Black Desert est un MMORPG axé sur un système sandbox. Le jeu prend place dans un univers médiéval-fantastique inspiré de l\'Italie de la Renaissance au sein duquel deux pays s\'affrontent, la République de Calpheon et le royaume de Valence. La raison de leur conflit est la Pierre Noire, une source d\'énergie essentielle.', 'blackdesert.jpg', '9.99', '2017-05-24', 'Pearl Abyss'),
                                                                                                        (2, 'Satisfactory', 'Satisfactory est un jeu vidéo de simulation et de construction en vue à la première personne dans un monde ouvert développé par Coffee Stain Studios, qui ont créé également Goat Simulator. Le jeu est sorti le 19 mars 2019 en early access sur Windows. Il est jouable en solo ou en coopération de deux à quatre joueurs', '1465422592satisf.jpg', '26.99', '2019-03-19', 'Coffee Stain Studios'),
-                                                                                                       (3, 'Rust', 'Rust est un jeu vidéo d\'aventure et de survie en multijoueur développé et édité par Facepunch Studios. Le jeu est d\'abord disponible en accès anticipé à partir de décembre 2013, puis sort sur ordinateur le 8 février 2018.', '2113674445rust.jpg', '39.99', '2013-12-11', 'Facepunch Studios Ltd'),
-                                                                                                       (4, 'Elite Dangerous', 'Elite Dangerous  est un jeu vidéo de simulation spatiale (un « space sim ») de combat, de commerce et d\'exploration interstellaire, développé et édité par Frontier Developments et sorti en décembre 2014. Financé en partie sur la plateforme Kickstarter, le jeu constitue la quatrième édition de la franchise initiée par le jeu Elite, reconnu comme emblématique et fondateur du genre. Elite Dangerous est conçu et développé par David Braben, l\'un des deux co-créateurs de la série.', '1853708558elite.jpg', '24.99', '2014-12-16', 'Frontier Developments');
+                                                                                                       (3, 'Rust', 'Rust est un jeu vidéo d\'aventure et de survie en multijoueur développé et édité par Facepunch Studios. Le jeu est d\'abord disponible en accès anticipé à partir de décembre 2013, puis sort sur ordinateur le 8 février 2018.', '2113674445rust.jpg', '39.99', '2013-12-11', 'Facepunch Studios Ltd');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `admin`
+-- Index pour la table `admin`
 --
 ALTER TABLE `admin`
     ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `genres`
+-- Index pour la table `genres`
 --
 ALTER TABLE `genres`
     ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `genres_jeux`
+-- Index pour la table `genres_jeux`
 --
 ALTER TABLE `genres_jeux`
     ADD KEY `id_genre` (`id_genre`),
     ADD KEY `id_jeux` (`id_jeux`);
 
 --
--- Indexes for table `jeuxvideos`
+-- Index pour la table `jeuxvideos`
 --
 ALTER TABLE `jeuxvideos`
     ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `genres`
+-- AUTO_INCREMENT pour la table `genres`
 --
 ALTER TABLE `genres`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `jeuxvideos`
+-- AUTO_INCREMENT pour la table `jeuxvideos`
 --
 ALTER TABLE `jeuxvideos`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `genres_jeux`
+-- Contraintes pour la table `genres_jeux`
 --
 ALTER TABLE `genres_jeux`
     ADD CONSTRAINT `genres_jeux_ibfk_1` FOREIGN KEY (`id_genre`) REFERENCES `genres` (`id`),

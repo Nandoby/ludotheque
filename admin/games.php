@@ -3,6 +3,10 @@ session_start();
 if (!isset($_SESSION['login'])) {
     header("LOCATION:index.php");
 }
+
+if (isset($_GET['delete'])) {
+    $delete = 'Votre jeu a bien été supprimé';
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +22,7 @@ if (!isset($_SESSION['login'])) {
 <body>
 <div class="container-fluid">
     <a class="btn btn-primary mt-3" href="dashboard.php">Retour au Dashboard</a>
-
+    <?php if (isset($delete)) echo '<p class="alert alert-success">'.$delete.'</p>' ?>
     <table class="table mt-3">
         <thead>
         <tr>

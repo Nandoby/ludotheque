@@ -73,7 +73,7 @@
 <body>
 <header>
     <div id="logo">Ludothèque</div>
-    <form action="index.php?action=search" method="POST">
+    <form action="search" method="POST">
         <label for="search">Rechercher :</label>
         <input type="text" name="search" id="search">
     </form>
